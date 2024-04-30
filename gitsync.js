@@ -28,7 +28,7 @@ module.exports = class GitSync {
 
             let nodeId = config.issue.node_id ? config.issue.node_id : config.issue.nodeId;
             
-            if (nodeId && nodeId.startsWith("PR_")) {
+            if (config.issue && nodeId && nodeId.startsWith("PR_")) {
                 // Log and skip PRs (comments)
                 log.info(`Action is performed on PR #${config.issue.number}. Skipping...`);
             } else {
