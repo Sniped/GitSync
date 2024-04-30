@@ -26,9 +26,9 @@ module.exports = class GitSync {
 
             // Temporary fix until support of PRs
 
-            let nodeId = config.issue.node_id ? config.issue.node_id : config.issue.nodeId;
+            let nodeId = config.issue ? (config.issue.node_id ? config.issue.node_id : config.issue.nodeId) : null;
             
-            if (config.issue && nodeId && nodeId.startsWith("PR_")) {
+            if (nodeId && nodeId.startsWith("PR_")) {
                 // Log and skip PRs (comments)
                 log.info(`Action is performed on PR #${config.issue.number}. Skipping...`);
             } else {
